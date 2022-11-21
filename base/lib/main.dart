@@ -5,7 +5,10 @@ import 'package:core/app/base.dart';
 import 'package:core/app/core_services.dart';
 
 import 'package:list/list.dart';
+import 'package:lists/app/lists_router.dart';
 import 'package:login/login.dart';
+import 'package:dashboard/dashboard.dart';
+import 'package:calculator/calculator.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,10 +32,8 @@ class MyApp extends StatelessWidget with Base {
   }
 
   @override
-  List<AppContract> get appContracts => [
-        LoginRouter(),
-        ListRouter(),
-      ];
+  List<AppContract> get appContracts =>
+      [LoginRouter(), DashboardRouter(), CalculatorRouter(), ListsRouter()];
 
   @override
   Map<String, Widget Function(BuildContext context, Object? args)>

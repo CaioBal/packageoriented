@@ -1,24 +1,47 @@
 import 'package:flutter/material.dart';
 
-class ItemTile extends StatelessWidget {
-  final int itemNo;
+class ItemTile extends StatefulWidget {
+  final String itemNo;
 
   const ItemTile(
     this.itemNo,
   );
 
   @override
+  State<ItemTile> createState() => _ItemTileState();
+}
+
+class _ItemTileState extends State<ItemTile> {
+  bool isChecked = false;
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Colors.primaries[itemNo % Colors.primaries.length],
+        leading: Checkbox(
+          checkColor: Colors.white,
+          fillColor: MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return Colors.orange.withOpacity(.32);
+            }
+            return Colors.blue;
+          }),
+          value: isChecked,
+          onChanged: (bool? value) {
+            setState(() {
+              isChecked = value!;
+            });
+          },
         ),
         title: Text(
-          'Item $itemNo',
-          key: Key('text_$itemNo'),
+          widget.itemNo,
+          key: Key('text_' + widget.itemNo),
         ),
+        onTap: () => setState(() {
+          isChecked = !isChecked;
+        }),
       ),
     );
   }

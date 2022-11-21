@@ -1,6 +1,7 @@
 import 'package:core/app/core_services.dart';
 import 'package:flutter/material.dart';
 import 'package:login/app/login_controller.dart';
+import 'package:shared_dashboard_login/shared_dashboard_login.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -9,9 +10,7 @@ class LoginPage extends StatelessWidget {
     final passController = TextEditingController();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
+      appBar: MyAppBar(appText: "Login"),
       body: Container(
         margin: EdgeInsets.all(10),
         width: double.infinity,
@@ -42,7 +41,7 @@ class LoginPage extends StatelessWidget {
                         if (LoginController()
                             .login(userController.text, passController.text))
                           {
-                            navigatorKey.currentState?.pushNamed('/list'),
+                            navigatorKey.currentState?.pushNamed('/dashboard'),
                           }
                       },
                   child: const Text("Entrar")),
