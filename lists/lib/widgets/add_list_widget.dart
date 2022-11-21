@@ -43,22 +43,26 @@ class _AddListWidgetState extends State<AddListWidget> {
       actions: <Widget>[
         ElevatedButton(
             onPressed: () async => {
-                  listsParamsId =
-                      await widget.obBox.save(alertController.text, [], null),
-                  widget.callback(
-                    ListCard(
-                      cardName: alertController.text,
-                      cardPath: 'list',
-                      callback: widget.itemListCallback,
-                      listId: listsParamsId,
-                    ),
-                    ListsEntity(
-                        id: listsParamsId,
-                        listName: alertController.text,
-                        listItems: []),
-                  ),
-                  alertController.text = '',
-                  Navigator.of(context).pop()
+                  alertController.text.isEmpty
+                      ? null
+                      : {
+                          listsParamsId = await widget.obBox
+                              .save(alertController.text, [], null),
+                          widget.callback(
+                            ListCard(
+                              cardName: alertController.text,
+                              cardPath: 'list',
+                              callback: widget.itemListCallback,
+                              listId: listsParamsId,
+                            ),
+                            ListsEntity(
+                                id: listsParamsId,
+                                listName: alertController.text,
+                                listItems: []),
+                          ),
+                          alertController.text = '',
+                          Navigator.of(context).pop()
+                        }
                 },
             child: const Text("Entrar")),
       ],
