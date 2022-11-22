@@ -4,7 +4,6 @@ import 'package:core/app/app_contract.dart';
 import 'package:core/app/base.dart';
 import 'package:core/app/core_services.dart';
 
-import 'package:list/list.dart';
 import 'package:lists/app/lists_router.dart';
 import 'package:login/login.dart';
 import 'package:dashboard/dashboard.dart';

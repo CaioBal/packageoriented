@@ -55,13 +55,18 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                         actions: <Widget>[
                           ElevatedButton(
                               onPressed: () => {
-                                    setState(() {
-                                      listItems.add(alertController.text);
-                                      widget.obBox.save(
-                                          listName, listItems, widget.listId);
-                                    }),
-                                    alertController.text = '',
-                                    Navigator.of(context).pop()
+                                    alertController.text.isEmpty
+                                        ? null
+                                        : {
+                                            setState(() {
+                                              listItems
+                                                  .add(alertController.text);
+                                              widget.obBox.save(listName,
+                                                  listItems, widget.listId);
+                                            }),
+                                            alertController.text = '',
+                                            Navigator.of(context).pop()
+                                          },
                                   },
                               child: const Text("Entrar")),
                         ],
