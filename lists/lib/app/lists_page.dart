@@ -17,7 +17,7 @@ class ListsPage extends StatefulWidget {
 
 class _ListsPageState extends State<ListsPage> {
   final alertController = TextEditingController();
-  final obBox = Persistence(ObjectBox());
+  final obBox = Persistence();
 
   List<Widget> lists = [];
   List<int> listsCounter = [];
@@ -76,7 +76,9 @@ class _ListsPageState extends State<ListsPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        builder: (context) => ItemListWidget(listId: listId, obBox: obBox));
+        builder: (context) => ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: ItemListWidget(listId: listId, obBox: obBox)));
   }
 
   @override

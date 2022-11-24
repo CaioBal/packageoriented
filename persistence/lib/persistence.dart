@@ -13,7 +13,9 @@ class ObjectBox {
 class Persistence {
   late final ObjectBox _database;
 
-  Persistence(this._database);
+  Persistence() {
+    _database = ObjectBox();
+  }
 
   Future<Box> getBox() async {
     final store = await _database.getStore();

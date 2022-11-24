@@ -20,7 +20,7 @@ class ListsWidget extends StatefulWidget {
 
 class _ListsWidgetState extends State<ListsWidget> {
   final alertController = TextEditingController();
-  final obBox = Persistence(ObjectBox());
+  final obBox = Persistence();
 
   List<Widget> lists = [];
   List<int> listsCounter = [];
